@@ -1,0 +1,299 @@
+[0m15:59:49.365982 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2ba8f552d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2ba8f542d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2ba8f54f50>]}
+
+
+============================== 15:59:49.371958 | 8155d4e6-d45b-4ab8-8d18-6205d95f96e4 ==============================
+[0m15:59:49.371958 [info ] [MainThread]: Running with dbt=1.10.11
+[0m15:59:49.373090 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'log_path': '/home/afshin/learn/gw_dbt_model/logs', 'static_parser': 'True', 'debug': 'False', 'printer_width': '80', 'fail_fast': 'False', 'log_cache_events': 'False', 'use_experimental_parser': 'False', 'target_path': 'None', 'write_json': 'True', 'version_check': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'None', 'no_print': 'None', 'use_colors': 'True', 'quiet': 'False', 'invocation_command': 'dbt ', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'partial_parse': 'True', 'profiles_dir': '/home/afshin/.dbt'}
+[0m15:59:49.389984 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `source-paths` config has been renamed to `model-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m15:59:49.391401 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '8155d4e6-d45b-4ab8-8d18-6205d95f96e4', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2ba8e4b150>]}
+[0m15:59:49.392368 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `data-paths` config has been renamed to `seed-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m15:59:49.393108 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '8155d4e6-d45b-4ab8-8d18-6205d95f96e4', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2ba8e51510>]}
+[0m15:59:49.598470 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '8155d4e6-d45b-4ab8-8d18-6205d95f96e4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2ba8ef3390>]}
+[0m15:59:49.618778 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-6gmmkon2'
+[0m15:59:49.619682 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m15:59:49.981074 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m15:59:49.982335 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m15:59:50.197167 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m15:59:50.211425 [error] [MainThread]: Encountered an error:
+Could not find a matching compatible version for package dbt-labs/dbt_utils
+  Requested range: =0.7.1, =0.7.1
+  Compatible versions: ['0.0.1', '0.1.0', '0.1.1', '0.1.2', '0.1.3', '0.1.4', '0.1.5', '0.1.6', '0.1.7', '0.1.8', '0.1.9', '0.1.10', '0.1.11', '0.1.12', '0.1.13', '0.1.14', '0.1.15', '0.1.16', '0.1.17', '0.1.18', '0.1.19', '0.1.20', '0.1.21', '0.1.22', '0.1.23', '0.1.24', '0.1.25', '0.2.0', '0.2.1', '0.2.2', '0.2.3', '0.2.4', '0.2.5', '0.3.0', '0.4.0', '0.4.1', '0.5.0', '0.8.0', '0.8.1', '0.8.2', '0.8.3', '0.8.4', '0.8.5', '0.8.6', '0.9.0', '0.9.1', '0.9.2', '0.9.5', '0.9.6', '1.0.0', '1.1.0', '1.1.1', '1.2.0', '1.3.0']
+
+  Not shown: package versions incompatible with installed version of dbt-core
+  To include them, run 'dbt --no-version-check deps'
+[0m15:59:50.216802 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/cli/requires.py", line 178, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/cli/requires.py", line 254, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/cli/requires.py", line 303, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/cli/main.py", line 461, in deps
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/task/deps.py", line 215, in run
+    self.lock()
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/task/deps.py", line 187, in lock
+    resolved_deps = resolve_packages(packages, self.project, self.cli_vars)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/deps/resolver.py", line 131, in resolve_packages
+    target = final[package].resolved().fetch_metadata(project, renderer)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/deps/registry.py", line 124, in resolved
+    raise PackageVersionNotFoundError(
+dbt.exceptions.PackageVersionNotFoundError: Could not find a matching compatible version for package dbt-labs/dbt_utils
+  Requested range: =0.7.1, =0.7.1
+  Compatible versions: ['0.0.1', '0.1.0', '0.1.1', '0.1.2', '0.1.3', '0.1.4', '0.1.5', '0.1.6', '0.1.7', '0.1.8', '0.1.9', '0.1.10', '0.1.11', '0.1.12', '0.1.13', '0.1.14', '0.1.15', '0.1.16', '0.1.17', '0.1.18', '0.1.19', '0.1.20', '0.1.21', '0.1.22', '0.1.23', '0.1.24', '0.1.25', '0.2.0', '0.2.1', '0.2.2', '0.2.3', '0.2.4', '0.2.5', '0.3.0', '0.4.0', '0.4.1', '0.5.0', '0.8.0', '0.8.1', '0.8.2', '0.8.3', '0.8.4', '0.8.5', '0.8.6', '0.9.0', '0.9.1', '0.9.2', '0.9.5', '0.9.6', '1.0.0', '1.1.0', '1.1.1', '1.2.0', '1.3.0']
+
+  Not shown: package versions incompatible with installed version of dbt-core
+  To include them, run 'dbt --no-version-check deps'
+
+[0m15:59:50.219600 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ConfigSourcePathDeprecation: 1 occurrence
+- ConfigDataPathDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m15:59:50.229172 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": false, "command_wall_clock_time": 0.9490622, "process_in_blocks": "120", "process_kernel_time": 1.150816, "process_mem_max_rss": "105352", "process_out_blocks": "24", "process_user_time": 1.622331}
+[0m15:59:50.229786 [debug] [MainThread]: Command `cli deps` failed at 15:59:50.229653 after 0.95 seconds
+[0m15:59:50.230348 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2ba8fb1dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2ba8fb2110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2bad6503d0>]}
+[0m15:59:50.230929 [debug] [MainThread]: Flushing usage events
+[0m15:59:51.874986 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:00:48.903282 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe7b9349ed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe7b934bb50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe7b934b450>]}
+
+
+============================== 16:00:48.914543 | 746a054f-13ad-493b-93f7-d7e7282bd89e ==============================
+[0m16:00:48.914543 [info ] [MainThread]: Running with dbt=1.10.11
+[0m16:00:48.917128 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'profiles_dir': '/home/afshin/.dbt', 'warn_error': 'None', 'use_colors': 'True', 'log_format': 'default', 'invocation_command': 'dbt deps', 'log_path': '/home/afshin/learn/gw_dbt_model/logs', 'no_print': 'None', 'empty': 'None', 'cache_selected_only': 'False', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'write_json': 'True', 'indirect_selection': 'eager', 'printer_width': '80', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'quiet': 'False', 'target_path': 'None', 'partial_parse': 'True', 'debug': 'False', 'introspect': 'True'}
+[0m16:00:48.942098 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `source-paths` config has been renamed to `model-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m16:00:48.943070 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '746a054f-13ad-493b-93f7-d7e7282bd89e', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe7b92443d0>]}
+[0m16:00:48.943914 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `data-paths` config has been renamed to `seed-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m16:00:48.944653 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '746a054f-13ad-493b-93f7-d7e7282bd89e', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe7b923df50>]}
+[0m16:00:49.148727 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '746a054f-13ad-493b-93f7-d7e7282bd89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe7b923efd0>]}
+[0m16:00:49.168724 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-mmtmh3b1'
+[0m16:00:49.169746 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m16:00:49.292908 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m16:00:49.294771 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m16:00:49.368097 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m16:00:49.385084 [error] [MainThread]: Encountered an error:
+Could not find a matching compatible version for package dbt-labs/dbt_utils
+  Requested range: =0.7.1, =0.7.1
+  Compatible versions: ['0.0.1', '0.1.0', '0.1.1', '0.1.2', '0.1.3', '0.1.4', '0.1.5', '0.1.6', '0.1.7', '0.1.8', '0.1.9', '0.1.10', '0.1.11', '0.1.12', '0.1.13', '0.1.14', '0.1.15', '0.1.16', '0.1.17', '0.1.18', '0.1.19', '0.1.20', '0.1.21', '0.1.22', '0.1.23', '0.1.24', '0.1.25', '0.2.0', '0.2.1', '0.2.2', '0.2.3', '0.2.4', '0.2.5', '0.3.0', '0.4.0', '0.4.1', '0.5.0', '0.8.0', '0.8.1', '0.8.2', '0.8.3', '0.8.4', '0.8.5', '0.8.6', '0.9.0', '0.9.1', '0.9.2', '0.9.5', '0.9.6', '1.0.0', '1.1.0', '1.1.1', '1.2.0', '1.3.0']
+
+  Not shown: package versions incompatible with installed version of dbt-core
+  To include them, run 'dbt --no-version-check deps'
+[0m16:00:49.391578 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/cli/requires.py", line 178, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/cli/requires.py", line 254, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/cli/requires.py", line 303, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/cli/main.py", line 461, in deps
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/task/deps.py", line 215, in run
+    self.lock()
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/task/deps.py", line 187, in lock
+    resolved_deps = resolve_packages(packages, self.project, self.cli_vars)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/deps/resolver.py", line 131, in resolve_packages
+    target = final[package].resolved().fetch_metadata(project, renderer)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/afshin/dbt2-env/lib/python3.11/site-packages/dbt/deps/registry.py", line 124, in resolved
+    raise PackageVersionNotFoundError(
+dbt.exceptions.PackageVersionNotFoundError: Could not find a matching compatible version for package dbt-labs/dbt_utils
+  Requested range: =0.7.1, =0.7.1
+  Compatible versions: ['0.0.1', '0.1.0', '0.1.1', '0.1.2', '0.1.3', '0.1.4', '0.1.5', '0.1.6', '0.1.7', '0.1.8', '0.1.9', '0.1.10', '0.1.11', '0.1.12', '0.1.13', '0.1.14', '0.1.15', '0.1.16', '0.1.17', '0.1.18', '0.1.19', '0.1.20', '0.1.21', '0.1.22', '0.1.23', '0.1.24', '0.1.25', '0.2.0', '0.2.1', '0.2.2', '0.2.3', '0.2.4', '0.2.5', '0.3.0', '0.4.0', '0.4.1', '0.5.0', '0.8.0', '0.8.1', '0.8.2', '0.8.3', '0.8.4', '0.8.5', '0.8.6', '0.9.0', '0.9.1', '0.9.2', '0.9.5', '0.9.6', '1.0.0', '1.1.0', '1.1.1', '1.2.0', '1.3.0']
+
+  Not shown: package versions incompatible with installed version of dbt-core
+  To include them, run 'dbt --no-version-check deps'
+
+[0m16:00:49.395521 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ConfigSourcePathDeprecation: 1 occurrence
+- ConfigDataPathDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m16:00:49.399836 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": false, "command_wall_clock_time": 0.58201164, "process_in_blocks": "0", "process_kernel_time": 0.662414, "process_mem_max_rss": "105276", "process_out_blocks": "32", "process_user_time": 1.975271}
+[0m16:00:49.401467 [debug] [MainThread]: Command `dbt deps` failed at 16:00:49.401114 after 0.58 seconds
+[0m16:00:49.403201 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe7bd8e35d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe7b93a7050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe7ba0ebb90>]}
+[0m16:00:49.405181 [debug] [MainThread]: Flushing usage events
+[0m16:00:50.606529 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:02:05.521523 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e0a4f990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e0c3b4d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e0a4fb10>]}
+
+
+============================== 16:02:05.530811 | 63f7a475-aea8-4b9e-aaf9-f892571443cf ==============================
+[0m16:02:05.530811 [info ] [MainThread]: Running with dbt=1.10.11
+[0m16:02:05.532938 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'static_parser': 'True', 'log_path': '/home/afshin/learn/gw_dbt_model/logs', 'version_check': 'True', 'log_format': 'default', 'warn_error': 'None', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'quiet': 'False', 'introspect': 'True', 'debug': 'False', 'use_experimental_parser': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'fail_fast': 'False', 'partial_parse': 'True', 'write_json': 'True', 'indirect_selection': 'eager', 'empty': 'None', 'use_colors': 'True', 'printer_width': '80', 'profiles_dir': '/home/afshin/.dbt', 'send_anonymous_usage_stats': 'True', 'invocation_command': 'dbt deps'}
+[0m16:02:05.556554 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `source-paths` config has been renamed to `model-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m16:02:05.557417 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '63f7a475-aea8-4b9e-aaf9-f892571443cf', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e094ced0>]}
+[0m16:02:05.558261 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `data-paths` config has been renamed to `seed-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m16:02:05.559035 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '63f7a475-aea8-4b9e-aaf9-f892571443cf', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e094df10>]}
+[0m16:02:05.772802 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '63f7a475-aea8-4b9e-aaf9-f892571443cf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e097ce10>]}
+[0m16:02:05.791849 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-lagb5wlz'
+[0m16:02:05.792900 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m16:02:05.908427 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m16:02:05.909731 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/codegen.json
+[0m16:02:05.974576 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/codegen.json 200
+[0m16:02:05.982508 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m16:02:06.050302 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m16:02:06.071432 [info ] [MainThread]: Updating lock file in file path: /home/afshin/learn/gw_dbt_model/package-lock.yml
+[0m16:02:06.076175 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-vwbem8hx'
+[0m16:02:06.083117 [info ] [MainThread]: Installing dbt-labs/codegen
+[0m16:02:06.400451 [info ] [MainThread]: Installed from version 0.13.1
+[0m16:02:06.401364 [info ] [MainThread]: Up to date!
+[0m16:02:06.402136 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '63f7a475-aea8-4b9e-aaf9-f892571443cf', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e0856b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e09f3fd0>]}
+[0m16:02:06.402943 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m16:02:06.786793 [info ] [MainThread]: Installed from version 1.3.0
+[0m16:02:06.787557 [info ] [MainThread]: Up to date!
+[0m16:02:06.788306 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '63f7a475-aea8-4b9e-aaf9-f892571443cf', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e094ea10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e0a4fe10>]}
+[0m16:02:06.789937 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ConfigSourcePathDeprecation: 1 occurrence
+- ConfigDataPathDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m16:02:06.791607 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 1.3404807, "process_in_blocks": "0", "process_kernel_time": 0.512679, "process_mem_max_rss": "105392", "process_out_blocks": "3104", "process_user_time": 2.026685}
+[0m16:02:06.792400 [debug] [MainThread]: Command `dbt deps` succeeded at 16:02:06.792227 after 1.34 seconds
+[0m16:02:06.793065 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e5003690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e530b950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f20e0d42c10>]}
+[0m16:02:06.793770 [debug] [MainThread]: Flushing usage events
+[0m16:02:08.027371 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:05:19.545506 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed6f8c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed9d3290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed6fb590>]}
+
+
+============================== 16:05:19.555064 | 9d31bbca-0e56-4b31-b314-2b0354ab2680 ==============================
+[0m16:05:19.555064 [info ] [MainThread]: Running with dbt=1.10.11
+[0m16:05:19.557073 [debug] [MainThread]: running dbt with arguments {'log_path': '/home/afshin/learn/gw_dbt_model/logs', 'invocation_command': 'dbt deps', 'quiet': 'False', 'static_parser': 'True', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'version_check': 'True', 'target_path': 'None', 'warn_error': 'None', 'no_print': 'None', 'empty': 'None', 'use_experimental_parser': 'False', 'debug': 'False', 'fail_fast': 'False', 'write_json': 'True', 'profiles_dir': '/home/afshin/.dbt', 'indirect_selection': 'eager', 'log_format': 'default', 'partial_parse': 'True', 'introspect': 'True', 'printer_width': '80', 'use_colors': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True'}
+[0m16:05:19.586732 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `source-paths` config has been renamed to `model-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m16:05:19.587752 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '9d31bbca-0e56-4b31-b314-2b0354ab2680', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed751a10>]}
+[0m16:05:19.588601 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `data-paths` config has been renamed to `seed-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m16:05:19.589420 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '9d31bbca-0e56-4b31-b314-2b0354ab2680', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed5f51d0>]}
+[0m16:05:19.778235 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '9d31bbca-0e56-4b31-b314-2b0354ab2680', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed4a8b90>]}
+[0m16:05:19.799517 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-cmn6unq7'
+[0m16:05:19.800430 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m16:05:20.036107 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m16:05:20.038295 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/codegen.json
+[0m16:05:20.102612 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/codegen.json 200
+[0m16:05:20.116732 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m16:05:20.179911 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m16:05:20.191903 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_project_evaluator.json
+[0m16:05:20.265622 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_project_evaluator.json 200
+[0m16:05:20.304216 [info ] [MainThread]: Updating lock file in file path: /home/afshin/learn/gw_dbt_model/package-lock.yml
+[0m16:05:20.333669 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-zuop35nm'
+[0m16:05:20.343643 [info ] [MainThread]: Installing dbt-labs/codegen
+[0m16:05:20.664872 [info ] [MainThread]: Installed from version 0.13.1
+[0m16:05:20.665619 [info ] [MainThread]: Up to date!
+[0m16:05:20.666330 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '9d31bbca-0e56-4b31-b314-2b0354ab2680', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed4aadd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed6f9650>]}
+[0m16:05:20.667054 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m16:05:21.046972 [info ] [MainThread]: Installed from version 1.3.0
+[0m16:05:21.047760 [info ] [MainThread]: Up to date!
+[0m16:05:21.048526 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '9d31bbca-0e56-4b31-b314-2b0354ab2680', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed753950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed751ad0>]}
+[0m16:05:21.049253 [info ] [MainThread]: Installing dbt-labs/dbt_project_evaluator
+[0m16:05:21.431740 [info ] [MainThread]: Installed from version 1.1.2
+[0m16:05:21.432494 [info ] [MainThread]: Up to date!
+[0m16:05:21.433239 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '9d31bbca-0e56-4b31-b314-2b0354ab2680', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed556250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70ed557cd0>]}
+[0m16:05:21.434946 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ConfigSourcePathDeprecation: 1 occurrence
+- ConfigDataPathDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m16:05:21.436559 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 1.9615911, "process_in_blocks": "0", "process_kernel_time": 0.62089, "process_mem_max_rss": "105536", "process_out_blocks": "5232", "process_user_time": 2.223189}
+[0m16:05:21.437341 [debug] [MainThread]: Command `dbt deps` succeeded at 16:05:21.437168 after 1.96 seconds
+[0m16:05:21.437997 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70f1c63750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70f1d0b8d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f70f1d97f10>]}
+[0m16:05:21.438728 [debug] [MainThread]: Flushing usage events
+[0m16:05:22.641248 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:06:14.616913 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f741336d5d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f741336df90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f741336f450>]}
+
+
+============================== 16:06:14.626122 | e81d928e-dfc0-451d-a513-92049a28f815 ==============================
+[0m16:06:14.626122 [info ] [MainThread]: Running with dbt=1.10.11
+[0m16:06:14.628245 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'empty': 'None', 'static_parser': 'True', 'warn_error': 'None', 'log_format': 'default', 'log_path': '/home/afshin/learn/gw_dbt_model/logs', 'quiet': 'False', 'fail_fast': 'False', 'printer_width': '80', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'no_print': 'None', 'log_cache_events': 'False', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'profiles_dir': '/home/afshin/.dbt', 'use_colors': 'True', 'partial_parse': 'True', 'introspect': 'True', 'debug': 'False', 'target_path': 'None', 'invocation_command': 'dbt deps', 'write_json': 'True', 'use_experimental_parser': 'False'}
+[0m16:06:14.661887 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `source-paths` config has been renamed to `model-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m16:06:14.662861 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'e81d928e-dfc0-451d-a513-92049a28f815', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f74140eef10>]}
+[0m16:06:14.663683 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `data-paths` config has been renamed to `seed-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m16:06:14.664481 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'e81d928e-dfc0-451d-a513-92049a28f815', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7413269f10>]}
+[0m16:06:14.855520 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'e81d928e-dfc0-451d-a513-92049a28f815', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7413296b50>]}
+[0m16:06:14.897936 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-95be2n2w'
+[0m16:06:14.898968 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m16:06:14.978411 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m16:06:14.981130 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/codegen.json
+[0m16:06:15.045918 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/codegen.json 200
+[0m16:06:15.060444 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m16:06:15.136264 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m16:06:15.148510 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_project_evaluator.json
+[0m16:06:15.635995 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_project_evaluator.json 200
+[0m16:06:15.646965 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/brooklyn-data/dbt_artifacts.json
+[0m16:06:15.714140 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/brooklyn-data/dbt_artifacts.json 200
+[0m16:06:15.749422 [info ] [MainThread]: Updating lock file in file path: /home/afshin/learn/gw_dbt_model/package-lock.yml
+[0m16:06:15.801529 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-okxggsmd'
+[0m16:06:15.814533 [info ] [MainThread]: Installing dbt-labs/codegen
+[0m16:06:16.144849 [info ] [MainThread]: Installed from version 0.13.1
+[0m16:06:16.145782 [info ] [MainThread]: Up to date!
+[0m16:06:16.146666 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'e81d928e-dfc0-451d-a513-92049a28f815', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7413294810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f741326ae10>]}
+[0m16:06:16.147638 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m16:06:16.533507 [info ] [MainThread]: Installed from version 1.3.0
+[0m16:06:16.534293 [info ] [MainThread]: Up to date!
+[0m16:06:16.535042 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'e81d928e-dfc0-451d-a513-92049a28f815', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7415ce9510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f741326ae10>]}
+[0m16:06:16.535794 [info ] [MainThread]: Installing dbt-labs/dbt_project_evaluator
+[0m16:06:16.960287 [info ] [MainThread]: Installed from version 1.1.2
+[0m16:06:16.961059 [info ] [MainThread]: Up to date!
+[0m16:06:16.961817 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'e81d928e-dfc0-451d-a513-92049a28f815', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f741326b110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f741326ae10>]}
+[0m16:06:16.962538 [info ] [MainThread]: Installing brooklyn-data/dbt_artifacts
+[0m16:06:17.427815 [info ] [MainThread]: Installed from version 2.9.3
+[0m16:06:17.428617 [info ] [MainThread]: Up to date!
+[0m16:06:17.429333 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'e81d928e-dfc0-451d-a513-92049a28f815', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f74133c6290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f741305cd10>]}
+[0m16:06:17.431448 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ConfigSourcePathDeprecation: 1 occurrence
+- ConfigDataPathDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m16:06:17.433149 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 2.8859797, "process_in_blocks": "0", "process_kernel_time": 0.671407, "process_mem_max_rss": "105984", "process_out_blocks": "8424", "process_user_time": 2.20318}
+[0m16:06:17.433913 [debug] [MainThread]: Command `dbt deps` succeeded at 16:06:17.433744 after 2.89 seconds
+[0m16:06:17.434604 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f74178d7710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f74140ef7d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f741797f8d0>]}
+[0m16:06:17.435284 [debug] [MainThread]: Flushing usage events
+[0m16:06:18.652123 [debug] [MainThread]: An error was encountered while trying to flush usage events
