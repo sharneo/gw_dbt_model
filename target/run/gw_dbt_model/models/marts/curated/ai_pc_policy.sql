@@ -1,0 +1,14 @@
+
+  create or replace   view DEV_RAW_DB.L001_GWPC.ai_pc_policy
+  
+  
+  
+  
+  as (
+    select
+    $1:ACCOUNTID::NUMBER AS ACCOUNTID,
+    $1:AGENCYCONTACTDETAILS_EXT::STRING AS AGENCYCONTACTDETAILS_EXT
+from DEV_RAW_DB.L001_GWPC.RAW_PC_POLICY
+LIMIT 10
+  );
+
