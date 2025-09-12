@@ -1,0 +1,13 @@
+gw_dbt_model:
+  outputs:
+    dev:
+      account: yiwjnxp-wu74685
+      database: DEV_RAW_DB
+      password: Unilever69@1306
+      role: SFG_DEV_DATA_ENGINEER
+      schema: RAW
+      threads: 4
+      type: snowflake
+      user: dbt_dev_user
+      warehouse: SAPN_WH
+  target: dev
