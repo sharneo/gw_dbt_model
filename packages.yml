@@ -2,8 +2,12 @@
 # For full documentation: https://docs.getdbt.com/docs/building-a-dbt-project/package-management
 packages:
   - package: dbt-labs/codegen
-    version: 0.9.0
+    version: 0.13.1
   - package: dbt-labs/dbt_utils
     version: [">=1.3.0", "<2.0.0"]  
   - package: brooklyn-data/dbt_artifacts
     version: 2.9.3
+  - package: infinitelambda/dbt_tags
+    version: 1.6.1
+  - package: metaplane/dbt_expectations
+    version: 0.10.9

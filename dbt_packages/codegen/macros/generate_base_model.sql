@@ -1,4 +1,8 @@
 {% macro generate_base_model(source_name, table_name, leading_commas=False, case_sensitive_cols=False, materialized=None) %}
+  {{ return(adapter.dispatch('generate_base_model', 'codegen')(source_name, table_name, leading_commas, case_sensitive_cols, materialized)) }}
+{% endmacro %}
+
+{% macro default__generate_base_model(source_name, table_name, leading_commas, case_sensitive_cols, materialized) %}
 
 {%- set source_relation = source(source_name, table_name) -%}
 
@@ -21,11 +25,11 @@ renamed as (
     select
         {%- if leading_commas -%}
         {%- for column in column_names %}
-        {{", " if not loop.first}}{% if not case_sensitive_cols %}{{ column | lower }}{% elif target.type == "bigquery" %}{{ column }}{% else %}{{ "\"" ~ column ~ "\"" }}{% endif %}
+        {{", " if not loop.first}}{% if not case_sensitive_cols %}{{ column | lower }}{% else %}{{ adapter.quote(column) }}{% endif %}
         {%- endfor %}
         {%- else -%}
         {%- for column in column_names %}
-        {% if not case_sensitive_cols %}{{ column | lower }}{% elif target.type == "bigquery" %}{{ column }}{% else %}{{ "\"" ~ column ~ "\"" }}{% endif %}{{"," if not loop.last}}
+        {% if not case_sensitive_cols %}{{ column | lower }}{% else %}{{ adapter.quote(column) }}{% endif %}{{"," if not loop.last}}
         {%- endfor -%}
         {%- endif %}
 
@@ -38,7 +42,7 @@ select * from renamed
 
 {% if execute %}
 
-{{ log(base_model_sql, info=True) }}
+{{ print(base_model_sql) }}
 {% do return(base_model_sql) %}
 
 {% endif %}

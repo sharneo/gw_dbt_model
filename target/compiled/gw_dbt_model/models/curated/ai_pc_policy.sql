@@ -15,6 +15,7 @@ SELECT
 )
 
 SELECT 
+    md5(cast(coalesce(cast(donotdestroy as TEXT), '') || '-' || coalesce(cast(isportalpolicy_icare as TEXT), '') || '-' || coalesce(cast(priorpremiums as TEXT), '') || '-' || coalesce(cast(issuedate as TEXT), '') || '-' || coalesce(cast(accountid as TEXT), '') as TEXT)) sys_unique_id,
     donotdestroy,
     isportalpolicy_icare,
     priorpremiums,

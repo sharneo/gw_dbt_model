@@ -16,6 +16,7 @@ SELECT
 )
 
 SELECT 
+    {{ dbt_utils.generate_surrogate_key(['donotdestroy', 'isportalpolicy_icare', 'priorpremiums','issuedate','accountid']) }} sys_unique_id,
     donotdestroy,
     isportalpolicy_icare,
     priorpremiums,

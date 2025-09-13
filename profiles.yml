@@ -8,6 +8,6 @@ gw_dbt_model:
       schema: L001_GWPC
       threads: 4
       type: snowflake
-      user: afshin
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
       warehouse: dev_etl_wh
   target: dev

@@ -3,6 +3,7 @@
 Macros that generate dbt code, and log it to the command line.
 
 # Contents
+
 - [dbt-codegen](#dbt-codegen)
 - [Contents](#contents)
 - [Installation instructions](#installation-instructions)
@@ -13,42 +14,90 @@ Macros that generate dbt code, and log it to the command line.
   - [generate_base_model (source)](#generate_base_model-source)
     - [Arguments:](#arguments-1)
     - [Usage:](#usage-1)
-  - [generate_model_yaml (source)](#generate_model_yaml-source)
+  - [create_base_models (source)](#create_base_models-source)
     - [Arguments:](#arguments-2)
     - [Usage:](#usage-2)
-  - [generate_model_import_ctes (source)](#generate_model_import_ctes-source)
+  - [base_model_creation (source)](#base_model_creation-source)
     - [Arguments:](#arguments-3)
     - [Usage:](#usage-3)
+  - [generate_model_yaml (source)](#generate_model_yaml-source)
+    - [Arguments:](#arguments-4)
+    - [Usage:](#usage-4)
+  - [generate_model_import_ctes (source)](#generate_model_import_ctes-source)
+    - [Arguments:](#arguments-5)
+    - [Usage:](#usage-5)
+- [Contributing](#contributing)
 
 # Installation instructions
+
 New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/).
-1. Include this package in your `packages.yml` file — check [here](https://hub.getdbt.com/dbt-labs/codegen/latest/) for the latest version number.
+
+1. Include this package in your `packages.yml` file — check [here](https://hub.getdbt.com/dbt-labs/codegen/latest/) for the latest version number:
+
+```yml
+packages:
+  - package: dbt-labs/codegen
+    version: X.X.X ## update to latest version here
+```
+
 2. Run `dbt deps` to install the package.
 
 # Macros
+
 ## generate_source ([source](macros/generate_source.sql))
+
 This macro generates lightweight YAML for a [Source](https://docs.getdbt.com/docs/using-sources),
 which you can then paste into a schema file.
 
 ### Arguments
-* `schema_name` (required): The schema name that contains your source data
-* `database_name` (optional, default=target.database): The database that your
-source data is in.
-* `table_names` (optional, default=none): A list of tables that you want to generate the source definitions for.
-* `generate_columns` (optional, default=False): Whether you want to add the
-column names to your source definition.
-* `include_descriptions` (optional, default=False): Whether you want to add 
-description placeholders to your source definition.
-* `table_pattern` (optional, default='%'): A table prefix / postfix that you 
-want to subselect from all available tables within a given schema.
-* `exclude` (optional, default=''): A string you want to exclude from the selection criteria
-* `name` (optional, default=schema_name): The name of your source
+
+- `schema_name` (required): The schema name that contains your source data
+- `database_name` (optional, default=target.database): The database that your
+  source data is in.
+- `table_names` (optional, default=none): A list of tables that you want to generate the source definitions for.
+- `generate_columns` (optional, default=False): Whether you want to add the
+  column names to your source definition.
+- `include_descriptions` (optional, default=False): Whether you want to add
+  description placeholders to your source definition.
+- `include_data_types` (optional, default=True): Whether you want to add data
+  types to your source columns definitions.
+- `table_pattern` (optional, default='%'): A table prefix / postfix that you
+  want to subselect from all available tables within a given schema.
+- `exclude` (optional, default=''): A string you want to exclude from the selection criteria
+- `name` (optional, default=schema_name): The name of your source
+- `include_database` (optional, default=False): Whether you want to add
+  the database to your source definition
+- `include_schema` (optional, default=False): Whether you want to add
+  the schema to your source definition
+- `case_sensitive_databases` (optional, default=False): Whether you want database names to be
+  in lowercase, or to match the case in the source table — not compatible with Redshift
+- `case_sensitive_schemas` (optional, default=False): Whether you want schema names to be
+  in lowercase, or to match the case in the source table — not compatible with Redshift
+- `case_sensitive_tables` (optional, default=False): Whether you want table names to be
+  in lowercase, or to match the case in the source table — not compatible with Redshift
+- `case_sensitive_cols` (optional, default=False): Whether you want column names to be
+  in lowercase, or to match the case in the source table
+
+### Outputting to a file
+
+If you use the `dbt run-operation` approach it is possible to output directly to a file by piping the output to a new file and using the `--quiet` CLI flag:
+
+```
+dbt --quiet run-operation generate_source --args '{"table_names": ["orders"]}' > models/staging/jaffle_shop/_sources.yml
+```
 
 ### Usage:
+
 1. Copy the macro into a statement tab in the dbt Cloud IDE, or into an analysis file, and compile your code
 
 ```
 {{ codegen.generate_source('raw_jaffle_shop') }}
+```
+
+or for multiple arguments
+
+```
+{{ codegen.generate_source(schema_name= 'jaffle_shop', database_name= 'raw') }}
 ```
 
 Alternatively, call the macro as an [operation](https://docs.getdbt.com/docs/using-operations):
@@ -64,6 +113,18 @@ or
 $ dbt run-operation generate_source --args '{"schema_name": "jaffle_shop", "database_name": "raw", "table_names":["table_1", "table_2"]}'
 ```
 
+or if you want to include column names and data types:
+
+```
+$ dbt run-operation generate_source --args '{"schema_name": "jaffle_shop", "generate_columns": true}'
+```
+
+or if you want to include column names without data types (the behavior dbt-codegen <= v0.9.0):
+
+```
+$ dbt run-operation generate_source --args '{"schema_name": "jaffle_shop", "generate_columns": true, "include_data_types": false}'
+```
+
 2. The YAML for the source will be logged to the command line
 
 ```
@@ -72,6 +133,7 @@ version: 2
 sources:
   - name: raw_jaffle_shop
     database: raw
+    schema: raw_jaffle_shop
     tables:
       - name: customers
         description: ""
@@ -84,18 +146,20 @@ sources:
 3. Paste the output in to a schema `.yml` file, and refactor as required.
 
 ## generate_base_model ([source](macros/generate_base_model.sql))
+
 This macro generates the SQL for a base model, which you can then paste into a
 model.
 
 ### Arguments:
-* `source_name` (required): The source you wish to generate base model SQL for.
-* `table_name` (required): The source table you wish to generate base model SQL for.
-* `leading_commas` (optional, default=False): Whether you want your commas to be leading (vs trailing).
-* `case_sensitive_cols ` (optional, default=False): Whether your source table has case sensitive column names. If true, keeps the case of the column names from the source.
-* `materialized` (optional, default=None): Set materialization style (e.g. table, view, incremental) inside of the model's `config` block. If not set, materialization style will be controlled by `dbt_project.yml`
 
+- `source_name` (required): The source you wish to generate base model SQL for.
+- `table_name` (required): The source table you wish to generate base model SQL for.
+- `leading_commas` (optional, default=False): Whether you want your commas to be leading (vs trailing).
+- `case_sensitive_cols ` (optional, default=False): Whether your source table has case sensitive column names. If true, keeps the case of the column names from the source.
+- `materialized` (optional, default=None): Set materialization style (e.g. table, view, incremental) inside of the model's `config` block. If not set, materialization style will be controlled by `dbt_project.yml`
 
 ### Usage:
+
 1. Create a source for the table you wish to create a base model on top of.
 2. Copy the macro into a statement tab in the dbt Cloud IDE, or into an analysis file, and compile your code
 
@@ -140,21 +204,74 @@ select * from renamed
 
 4. Paste the output in to a model, and refactor as required.
 
+## create_base_models ([source](macros/create_base_models.sql))
+
+This macro generates a series of terminal commands (appended with the `&&` to allow for subsequent execution) that execute the [base_model_creation](#base_model_creation-source) bash script. This bash script will write the output of the [generate_base_model](#generate_base_model-source) macro into a new model file in your local dbt project.
+
+> **Note**: This macro is not compatible with the dbt Cloud IDE.
+
+### Arguments:
+
+- `source_name` (required): The source you wish to generate base model SQL for.
+- `tables` (required): A list of all tables you want to generate the base models for.
+
+### Usage:
+
+1. Create a source for the table you wish to create a base model on top of.
+2. Copy the macro into a statement tab into your local IDE, and run your code
+
+```sql
+dbt run-operation codegen.create_base_models --args '{source_name: my-source, tables: ["this-table","that-table"]}'
+```
+
+## base_model_creation ([source](bash_scripts/base_model_creation.sh))
+
+This bash script when executed from your local IDE will create model files in your dbt project instance that contain the outputs of the [generate_base_model](macros/generate_base_model.sql) macro.
+
+> **Note**: This macro is not compatible with the dbt Cloud IDE.
+
+### Arguments:
+
+- `source_name` (required): The source you wish to generate base model SQL for.
+- `tables` (required): A list of all tables you want to generate the base models for.
+
+### Usage:
+
+1. Create a source for the table you wish to create a base model on top of.
+2. Copy the macro into a statement tab into your local IDE, and run your code
+
+```bash
+source dbt_packages/codegen/bash_scripts/base_model_creation.sh "source_name" ["this-table","that-table"]
+```
+
 ## generate_model_yaml ([source](macros/generate_model_yaml.sql))
+
 This macro generates the YAML for a list of model(s), which you can then paste into a
 schema.yml file.
 
 ### Arguments:
-* `model_names` (required): The model(s) you wish to generate YAML for.
-* `upstream_descriptions` (optional, default=False): Whether you want to include descriptions for identical column names from upstream models.
+
+- `model_names` (required): The model(s) you wish to generate YAML for.
+- `upstream_descriptions` (optional, default=False): Whether you want to include descriptions for identical column names from upstream models and sources.
+- `include_data_types` (optional, default=True): Whether you want to add data types to your model column definitions.
 
 ### Usage:
+
 1. Create a model.
 2. Copy the macro into a statement tab in the dbt Cloud IDE, or into an analysis file, and compile your code
 
 ```
 {{ codegen.generate_model_yaml(
     model_names=['customers']
+) }}
+```
+
+You can use the helper function codegen.get_models and specify a directory and/or prefix to get a list of all matching models, to be passed into model_names list.
+
+```
+{% set models_to_generate = codegen.get_models(directory='marts', prefix='fct_') %}
+{{ codegen.generate_model_yaml(
+    model_names = models_to_generate
 ) }}
 ```
 
@@ -171,23 +288,29 @@ version: 2
 
 models:
   - name: customers
+    description: ""
     columns:
       - name: customer_id
+        data_type: integer
         description: ""
       - name: customer_name
+        data_type: text
         description: ""
 ```
 
 4. Paste the output in to a schema.yml file, and refactor as required.
 
 ## generate_model_import_ctes ([source](macros/generate_model_import_ctes.sql))
+
 This macro generates the SQL for a given model with all references pulled up into import CTEs, which you can then paste back into the model.
 
 ### Arguments:
-* `model_name` (required): The model you wish to generate SQL with import CTEs for.
-* `leading_commas` (optional, default = false): Whether you want your commas to be leading (vs trailing).
+
+- `model_name` (required): The model you wish to generate SQL with import CTEs for.
+- `leading_commas` (optional, default=False): Whether you want your commas to be leading (vs trailing).
 
 ### Usage:
+
 1. Create a model with your original SQL query
 2. Copy the macro into a statement tab in the dbt Cloud IDE, or into an analysis file, and compile your code
 
@@ -270,3 +393,7 @@ select * from final
 ```
 
 4. Replace the contents of the model's current SQL file with the compiled or logged code
+
+## Contributing
+
+To contirbute code to this package, please follow the steps outlined in the `integration_tests` directory's [README](https://github.com/dbt-labs/dbt-codegen/blob/main/integration_tests/README.md) file.
