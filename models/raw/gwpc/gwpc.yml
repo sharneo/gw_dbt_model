@@ -1,9 +1,0 @@
-version: 2
-
-sources:
-  - name: gwpc # Logical name for the source
-    database: DEV_RAW_DB
-    schema: L001_GWPC
-    tables:
-      - name: RAW_PC_POLICY
-      - name: RAW_PC_POLICYPERIOD
