@@ -27,6 +27,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 vars:
     surrogate_key_treat_nulls_as_empty_strings: true 
     enable_incremental: false
+    mute_ensure_materialization_override: true
 
 # on-run-start and on-run-end are SQL statement(s) or macros that run at the end of 
 # dbt run/dbt/seed/dbt snapshot commands. 

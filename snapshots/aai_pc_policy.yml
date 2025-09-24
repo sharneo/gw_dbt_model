@@ -1,0 +1,8 @@
+version: 2
+
+snapshots:
+  - name: aai_pc_policy
+    columns:
+      - name: id
+        data_tests:
+          - not_null
