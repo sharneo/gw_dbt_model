@@ -1,0 +1,183 @@
+version: 2
+
+wca_fields:
+  - field_name: record_set
+    start_pos: 1
+    length: 1
+    type: number
+  - field_name: claim_identifier
+    start_pos: 2
+    length: 19
+    type: text
+  - field_name: record_identifier
+    start_pos: 21
+    length: 1
+    type: number
+  - field_name: liability_status_date
+    start_pos: 22
+    length: 8
+    type: date
+  - field_name: claim_closed_flag
+    start_pos: 30
+    length: 1
+    type: text
+  - field_name: date_claim_closed
+    start_pos: 31
+    length: 8
+    type: date
+  - field_name: date_claim_reopened
+    start_pos: 39
+    length: 8
+    type: date
+  - field_name: reason_reopen_code
+    start_pos: 47
+    length: 1
+    type: number
+  - field_name: liability_status_code
+    start_pos: 48
+    length: 2
+    type: number
+  - field_name: no_longer_in_use_1
+    start_pos: 50
+    length: 2
+    type: number
+  - field_name: date_claim_review
+    start_pos: 52
+    length: 8
+    type: date
+  - field_name: no_longer_in_use_2
+    start_pos: 60
+    length: 2
+    type: number
+  - field_name: work_status_code
+    start_pos: 62
+    length: 2
+    type: number
+  - field_name: second_injury_claim_flag
+    start_pos: 64
+    length: 1
+    type: text
+  - field_name: initial_notifier_code
+    start_pos: 65
+    length: 2
+    type: number
+  - field_name: reasonable_excuse_code
+    start_pos: 67
+    length: 2
+    type: number
+  - field_name: no_longer_in_use_3
+    start_pos: 69
+    length: 8
+    type: number
+  - field_name: no_longer_in_use_4
+    start_pos: 77
+    length: 2
+    type: number
+  - field_name: action_date_section_66
+    start_pos: 79
+    length: 8
+    type: date
+  - field_name: action_type_section_66
+    start_pos: 87
+    length: 2
+    type: number
+  - field_name: common_law_action_date
+    start_pos: 89
+    length: 8
+    type: date
+  - field_name: initial_notifier_name
+    start_pos: 97
+    length: 40
+    type: text
+  - field_name: initial_notifier_telephone_number
+    start_pos: 137
+    length: 14
+    type: text
+  - field_name: description_incident
+    start_pos: 151
+    length: 200
+    type: text
+  - field_name: description_injury_illness
+    start_pos: 351
+    length: 200
+    type: text
+  - field_name: work_status_date
+    start_pos: 551
+    length: 8
+    type: date
+  - field_name: type_of_dispute
+    start_pos: 559
+    length: 2
+    type: number
+  - field_name: date_of_claim_screening
+    start_pos: 561
+    length: 8
+    type: date
+  - field_name: claim_screening_action_code
+    start_pos: 569
+    length: 2
+    type: number
+  - field_name: pi_result_percent
+    start_pos: 571
+    length: 3
+    type: number
+  - field_name: date_claim_recovery_action_commenced
+    start_pos: 574
+    length: 8
+    type: date
+  - field_name: percentage_estimated_recovery
+    start_pos: 582
+    length: 3
+    type: number
+  - field_name: recovery_investigation_indicator
+    start_pos: 585
+    length: 2
+    type: number
+  - field_name: sira_capacity_start_date
+    start_pos: 587
+    length: 8
+    type: date
+  - field_name: sira_capacity_end_date
+    start_pos: 595
+    length: 8
+    type: date
+  - field_name: sira_capacity_fitness
+    start_pos: 603
+    length: 2
+    type: number
+  - field_name: wcc_matter_number
+    start_pos: 605
+    length: 8
+    type: text
+  - field_name: section_52a_code
+    start_pos: 613
+    length: 2
+    type: number
+  - field_name: common_law_action_type
+    start_pos: 615
+    length: 2
+    type: number
+  - field_name: common_law_action_outcome
+    start_pos: 617
+    length: 2
+    type: number
+  - field_name: work_capacity_transition_date
+    start_pos: 619
+    length: 8
+    type: date
+  - field_name: work_capacity_transition_outcome
+    start_pos: 627
+    length: 2
+    type: number
+  - field_name: estimated_permanent_impairment_epi
+    start_pos: 629
+    length: 2
+    type: number
+  - field_name: assessed_percentage_permanent_impairment
+    start_pos: 631
+    length: 3
+    type: number
+  - field_name: filler
+    start_pos: 634
+    length: 267
+    type: text
