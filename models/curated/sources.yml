@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: wca_file
+    database: DEV_RAW_DB
+    schema: wca
+    tables:
+      - name: RAW_CLAIM_ACTIVITY_RECORD

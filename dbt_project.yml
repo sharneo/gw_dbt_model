@@ -33,9 +33,6 @@ vars:
 
 # Configuring seeds 
 # Full documentation: https://docs.getdbt.com/docs/building-a-dbt-project/seeds
-seeds:
-# This declares that column names in the seed file will not be quoted when the table is created.
-  +quote_columns: false
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -64,6 +61,7 @@ models:
           tags: "daily"
           # You can apply tags to models, snapshots, seeds. This allows you to run based on the tag such as `dbt run --model tag:daily` which would let you run all the models tagged "daily"
           # learn more about tags: https://docs.getdbt.com/reference/resource-configs/tags#definition
-  seeds:
+seeds:
+  gw_dbt_model:
     schema: P001_GWPC
     database: DEV_CURATED_DB

@@ -7,8 +7,3 @@ sources:
     tables:
       - name: RAW_PC_POLICY
       - name: RAW_PC_POLICYPERIOD
-  - name: wca # Logical name for the source
-    database: DEV_RAW_DB
-    schema: WCA
-    tables:
-      - name: RAW_CLAIM_ACTIVITY
