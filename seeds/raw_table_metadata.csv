@@ -1,9 +1,0 @@
-table_name,update_col,materialization,unique_key
-PC_POLICY,UpdateTime,table,ID
-PC_POLICY,UpdateTime,incremental,ID,SEQVAL
-CLAIMS,ModifiedAt,table,ID
-CLAIMS,ModifiedAt,incremental,ID,SEQVAL
-POLICY_HOLDER,LastUpdated,table,ID
-POLICY_HOLDER,LastUpdated,incremental,ID,SEQVAL
-CLAIM_PAYMENTS,PaymentDate,table,ID
-CLAIM_PAYMENTS,PaymentDate,incremental,ID,SEQVAL

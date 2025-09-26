@@ -8,16 +8,22 @@ packages:
   - name: dbt_artifacts
     package: brooklyn-data/dbt_artifacts
     version: 2.9.3
-  - name: dbt_tags
-    package: infinitelambda/dbt_tags
-    version: 1.6.1
   - name: dbt_expectations
     package: metaplane/dbt_expectations
     version: 0.10.9
   - name: elementary
     package: elementary-data/elementary
     version: 0.19.4
+  - name: salesforce
+    package: fivetran/salesforce
+    version: 2.0.0
   - name: dbt_date
     package: godatadriven/dbt_date
     version: 0.16.1
-sha1_hash: 35bb3c7558f8e713d87462768e9db4e63cc637f0
+  - name: fivetran_utils
+    package: fivetran/fivetran_utils
+    version: 0.4.10
+  - name: spark_utils
+    package: dbt-labs/spark_utils
+    version: 0.3.0
+sha1_hash: f0af4b2926d5a518d4fcdeced769b26de8073bbd

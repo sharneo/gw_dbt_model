@@ -1,4 +1,51 @@
-with cte_data as 
+create or replace view DEV_RAW_DB.L001_GWPC.VW_RAW_PC_POLICY(
+	DONOTDESTROY,
+	ISPORTALPOLICY_ICARE,
+	PUBLICID,
+	PRIORPREMIUMS,
+	ISSUEDATE,
+	PRIORPREMIUMS_CUR,
+	MOVEDPOLICYSOURCEACCOUNTID,
+	ACCOUNTID,
+	CREATETIME,
+	LOSSHISTORYTYPE,
+	EXCLUDEDFROMARCHIVE,
+	ARCHIVESTATE,
+	ARCHIVESCHEMAINFO,
+	ARCHIVEFAILUREDETAILSID,
+	PACKAGERISK,
+	NUMPRIORLOSSES,
+	UPDATETIME,
+	PRIMARYLANGUAGE,
+	DONOTARCHIVE,
+	ID,
+	PRIMARYLOCALE,
+	PRODUCTCODE,
+	EXCLUDEREASON,
+	GROUPNUMBERFROMPORTAL,
+	CREATEUSERID,
+	ARCHIVEFAILUREID,
+	CRNNUMBER_ICARE,
+	ORIGINALEFFECTIVEDATE,
+	BEANVERSION,
+	ARCHIVEPARTITION,
+	RETIRED,
+	UPDATEUSERID,
+	PRIORTOTALINCURRED,
+	ARCHIVEDATE,
+	PRIORTOTALINCURRED_CUR,
+	PRODUCERCODEOFSERVICEID,
+	NEWPRODUCERCODE_EXT,
+	NEWCLAIMSCHEMEAGENT_ICARE,
+	MOVEDPOLSRCACCTPUBID,
+	CURRENT_RECORD_FLAG,
+	AGENCYCONTACTDETAILS_EXT,
+	AGENCYCONTACTEMAIL_EXT,
+	AGENCYCONTACTNUMBER_EXT,
+	INSURANCEBOOK_EXTID,
+	SYS_UNIQUE_ID
+) as (
+    with cte_data as 
 (
 SELECT 
   $1:DONOTDESTROY::BOOLEAN as donotdestroy,
@@ -45,7 +92,7 @@ SELECT
   $1:AGENCYCONTACTEMAIL_EXT::TEXT as agencycontactemail_ext,
   $1:AGENCYCONTACTNUMBER_EXT::TEXT as agencycontactnumber_ext,
   $1:INSURANCEBOOK_EXTID::NUMBER as insurancebook_extid
-FROM {{ source('gwpc', 'RAW_PC_POLICY') }}
+FROM DEV_RAW_DB.L001_GWPC.RAW_PC_POLICY
 )
 
 SELECT 
@@ -93,9 +140,11 @@ SELECT
     agencycontactemail_ext,
     agencycontactnumber_ext,
     insurancebook_extid,
-    {{ dbt_utils.generate_surrogate_key(['ID','UpdateTime','donotdestroy', 'isportalpolicy_icare', 'priorpremiums','issuedate','accountid']) }} sys_unique_id
+    md5(cast(coalesce(cast(ID as TEXT), '') || '-' || coalesce(cast(UpdateTime as TEXT), '') || '-' || coalesce(cast(donotdestroy as TEXT), '') || '-' || coalesce(cast(isportalpolicy_icare as TEXT), '') || '-' || coalesce(cast(priorpremiums as TEXT), '') || '-' || coalesce(cast(issuedate as TEXT), '') || '-' || coalesce(cast(accountid as TEXT), '') as TEXT)) sys_unique_id
 FROM cte_data
 qualify row_number() over (
             partition by ID 
             order by UpdateTime desc
-        ) = 1  
+        ) = 1
+  )
+/* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "gw_dbt_model", "target_name": "dev", "node_id": "model.gw_dbt_model.vw_raw_pc_policy"} */;

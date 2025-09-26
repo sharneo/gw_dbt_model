@@ -11,6 +11,8 @@
 
 
 
-  select *,cast(UpdateTime as timestamp_ntz) as update_time_ntz
-  from {{ ref('vw_raw_pc_policy') }}
+
+  SELECT 
+     {{ dbt_utils.star(from=ref('vw_raw_pc_policy')) }}
+  FROM {{ ref('vw_raw_pc_policy') }}
 {% endsnapshot %}
