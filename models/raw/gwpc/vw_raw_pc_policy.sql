@@ -93,9 +93,51 @@ SELECT
     agencycontactemail_ext,
     agencycontactnumber_ext,
     insurancebook_extid,
-    {{ dbt_utils.generate_surrogate_key(['ID','UpdateTime','donotdestroy', 'isportalpolicy_icare', 'priorpremiums','issuedate','accountid']) }} sys_unique_id
+    {{ dbt_utils.generate_surrogate_key([
+        'donotdestroy',
+        'isportalpolicy_icare',
+        'publicid',
+        'priorpremiums',
+        'issuedate',
+        'priorpremiums_cur',
+        'movedpolicysourceaccountid',
+        'accountid',
+        'createtime',
+        'losshistorytype',
+        'excludedfromarchive',
+        'archivestate',
+        'archiveschemainfo',
+        'archivefailuredetailsid',
+        'packagerisk',
+        'numpriorlosses',
+        'updatetime',
+        'primarylanguage',
+        'donotarchive',
+        'primarylocale',
+        'productcode',
+        'excludereason',
+        'groupnumberfromportal',
+        'createuserid',
+        'archivefailureid',
+        'crnnumber_icare',
+        'originaleffectivedate',
+        'beanversion',
+        'archivepartition',
+        'retired',
+        'updateuserid',
+        'priortotalincurred',
+        'archivedate',
+        'priortotalincurred_cur',
+        'producercodeofserviceid',
+        'newproducercode_ext',
+        'newclaimschemeagent_icare',
+        'movedpolsrcacctpubid',
+        'current_record_flag',
+        'agencycontactdetails_ext',
+        'agencycontactemail_ext',
+        'agencycontactnumber_ext',
+        'insurancebook_extid',
+        'ID'
+    ]) }} sys_unique_id
 FROM cte_data
-qualify row_number() over (
-            partition by ID 
-            order by UpdateTime desc
-        ) = 1  
+QUALIFY ROW_NUMBER() OVER (PARTITION BY ID ORDER BY updatetime) = 1
