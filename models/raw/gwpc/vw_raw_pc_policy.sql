@@ -44,14 +44,15 @@ SELECT
   $1:AGENCYCONTACTDETAILS_EXT::TEXT as agencycontactdetails_ext,
   $1:AGENCYCONTACTEMAIL_EXT::TEXT as agencycontactemail_ext,
   $1:AGENCYCONTACTNUMBER_EXT::TEXT as agencycontactnumber_ext,
-  $1:INSURANCEBOOK_EXTID::NUMBER as insurancebook_extid
+  $1:INSURANCEBOOK_EXTID::NUMBER as insurancebook_extid,
+  INGESTION_TIME
 FROM {{ source('gwpc', 'RAW_PC_POLICY') }}
 )
 
 SELECT 
     donotdestroy,
     isportalpolicy_icare,
-    publicid,
+    CAST(publicid AS VARCHAR(300)) as publicid,
     priorpremiums,
     issuedate,
     priorpremiums_cur,
@@ -87,12 +88,13 @@ SELECT
     producercodeofserviceid,
     newproducercode_ext,
     newclaimschemeagent_icare,
-    movedpolsrcacctpubid,
+    CAST(movedpolsrcacctpubid AS VARCHAR(300)) as movedpolsrcacctpubid,
     current_record_flag,
-    agencycontactdetails_ext,
-    agencycontactemail_ext,
+    CAST(agencycontactdetails_ext AS VARCHAR(300)) as agencycontactdetails_ext,
+    CAST(agencycontactemail_ext AS VARCHAR(300)) as agencycontactemail_ext,
     agencycontactnumber_ext,
     insurancebook_extid,
+    ingestion_time,
     {{ dbt_utils.generate_surrogate_key([
         'donotdestroy',
         'isportalpolicy_icare',
@@ -140,4 +142,3 @@ SELECT
         'ID'
     ]) }} sys_unique_id
 FROM cte_data
-QUALIFY ROW_NUMBER() OVER (PARTITION BY ID ORDER BY updatetime) = 1
